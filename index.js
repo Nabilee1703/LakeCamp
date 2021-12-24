@@ -27,7 +27,7 @@ const mongoSanitize = require('express-mongo-sanitize');
 const helmet = require("helmet");
 const MongoStore = require('connect-mongo');
 
-const Errorschema = require('./schema/errorschema');
+// const Errorschema = require('./schema/errorschema');
 
 const MongoDBLink = process.env.MONGODB_LINK || 'mongodb://localhost:27017/yelpcamp'
 const secret = process.env.SECRET
@@ -148,10 +148,10 @@ app.use('/campgrounds/:id', reviews)
 
 app.use('/', user)
 app.all('*', (req, res, next) => {
-    next(new Errorschema('Page not found!', 500))
+    next()
 })
 app.use(function (error, req, res, next) {
-    res.status(error.statusCode)
-    res.render('error', { error })
+    res.status(500)
+    res.render('error', 'Page not found!')
 
 })
