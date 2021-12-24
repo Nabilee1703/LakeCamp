@@ -1,0 +1,41 @@
+.link a{
+    /* color: #14213d; */
+    font-weight: bolder;
+    text-decoration: none;
+  }
+  .link a :hover{
+    color: #ED553B;
+      text-decoration: none;
+  }
+  .link :hover{
+    color: #ED553B;
+      text-decoration: none;
+  }
+
+  #resizeImg {
+    object-fit: contain;
+    width: 100%;
+    height: 350px;
+  }
+
+  #resizeImg2 {
+    object-fit: cover;
+    width: 100%;
+    height: 280px;
+  }
+  @media(max-width:768px) {
+    #resizeImg {
+      object-fit: contain;
+      width: 100%;
+      height: 300px;
+    }
+  }
+  /* .rightarrow{
+      color: #14213d;
+      transition: transform 400ms;
+  }
+  
+  .link:hover .rightarrow{
+    color: #ED553B;
+      transform: translateX(10px);
+  } */

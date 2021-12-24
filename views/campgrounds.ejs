@@ -1,0 +1,46 @@
+<% layout('layouts/boilerplate') -%>
+    <!-- <ol>
+        <%for(campground of campgrounds){%>
+            <li><a href="campgrounds/<%=campground._id%>"><%=campground.title%></a></li>
+        <%}%>
+    </ol> -->
+    <!-- <a href="/campgrounds/new">Adding a new campground</a> -->
+    <div id='map' style='width: 100%; height: 250px;' class='mb-4'></div>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-xl-3 g-3">
+        <%for(campground of campgrounds){%>
+            <div class="col">
+                <div class="card">
+                    <% if(campground.images.length){%>
+                        <a href="campgrounds/<%=campground._id%>"><img src="<%=campground.images[0].path%>" class="card-img-top" id="resizeImg2"></a>
+                    <%} else { %>
+                        <img src="https://res.cloudinary.com/diwpadoiz/image/upload/v1640257019/YelpCamp/opaiv6fsxisfkmefxeqm.jpg" class="card-img-top" id="resizeImg2" />
+                    <%}%>
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <div class="link">
+                                <a href="campgrounds/<%=campground._id%>"><%=campground.title%></a>
+                                <!-- <span class="rightarrow d-inline-block">&#129030;</span> -->
+                               
+                            </div>
+                        </h5>
+                        <h6 class="card-text">
+                            <%=campground.price%>$
+                        </h6>
+                        <p class="card-text">
+                            <%=campground.description.substring(0,42)%>...
+                        </p>
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-muted">
+                            <%=campground.location%>
+                        </small>
+                    </div>
+                </div>
+            </div>
+         <%}%>
+    </div>
+    <script>
+        const mapToken = '<%-process.env.MAPBOX_TOKEN%>';
+        const campgroundsForMap = {features: <%-JSON.stringify(campgrounds)%>};
+    </script>
+    <script src="/javascripts/clusterMap.js"></script>
