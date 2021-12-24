@@ -39,7 +39,7 @@ const sessionConfig = {
     }),
     name: 'ChanHoa',
     secret: secret,
-    // secure: true,
+    secure: true,
     resave: false,
     saveUninitialized: true,
     cookie: {
