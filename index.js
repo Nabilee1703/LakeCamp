@@ -60,9 +60,9 @@ main()
     })
     .catch(err => console.log(err));
 
-
-app.listen(2000, () => {
-    console.log('listened port 2000')
+const port = process.env.PORT || 3000
+app.listen(port, () => {
+    console.log(`listened port ${port}`)
 })
 app.engine('ejs', ejsMate)
 app.use(flash())
