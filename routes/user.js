@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router({ mergeParams: true });
-const Errorschema = require('../schema/errorschema');
 const User = require('../schema/user')
 const passport = require('passport');
 
