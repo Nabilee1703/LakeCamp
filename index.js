@@ -31,11 +31,12 @@ const MongoStore = require('connect-mongo');
 
 const MongoDBLink = process.env.MONGODB_LINK || 'mongodb://localhost:27017/yelpcamp'
 const secret = process.env.SECRET
+app.set('trust proxy', 1); 
 const sessionConfig = {
     store: MongoStore.create({
         mongoUrl: MongoDBLink,
         secret: secret,
-        ttl: 24 * 60 * 60
+        touchAfter: 24 * 60 * 60
     }),
     name: 'ChanHoa',
     secret: secret,
