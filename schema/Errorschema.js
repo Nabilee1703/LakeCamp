@@ -5,4 +5,4 @@ class Errorschema extends Error {
         this.statusCode = statusCode;
     }
 }
-module.exports = Errorschema;
+export default Errorschema;

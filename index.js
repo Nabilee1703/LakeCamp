@@ -14,7 +14,7 @@ app.use(methodOverride('_method'))
 app.use(express.urlencoded({ extended: true }))
 app.use(express.static(path.join(__dirname, 'public')))
 const mongoose = require('mongoose');
-const Errorschema = require('./schema/errorschema.js');
+
 const User = require('./schema/user');
 const session = require('express-session');
 const flash = require('connect-flash');
@@ -27,7 +27,7 @@ const mongoSanitize = require('express-mongo-sanitize');
 const helmet = require("helmet");
 const MongoStore = require('connect-mongo');
 
-
+const Errorschema = require('./schema/errorschema');
 
 const MongoDBLink = process.env.MONGODB_LINK || 'mongodb://localhost:27017/yelpcamp'
 const secret = process.env.SECRET
