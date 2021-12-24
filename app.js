@@ -14,7 +14,7 @@ app.use(methodOverride('_method'))
 app.use(express.urlencoded({ extended: true }))
 app.use(express.static(path.join(__dirname, 'public')))
 const mongoose = require('mongoose');
-const Errorschema = require('./schema/Errorschema');
+const Errorschema = require('./schema/errorschema.js');
 const User = require('./schema/user');
 const session = require('express-session');
 const flash = require('connect-flash');
