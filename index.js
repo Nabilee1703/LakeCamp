@@ -100,6 +100,7 @@ const styleSrcUrls = [
     "https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
 ];
 const connectSrcUrls = [
+    "https://cloudinary.com/",
     "https://api.mapbox.com/",
     "https://a.tiles.mapbox.com/",
     "https://b.tiles.mapbox.com/",
