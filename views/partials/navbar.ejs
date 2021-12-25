@@ -27,9 +27,17 @@
 </div>
 
 <script>
-  $( '#topheader .navbar-nav a' ).on('click',
-      async function () {
-      await $( '#topheader .navbar-nav' ).find( 'a.active' ).removeClass( 'active' );
-      await $( this ).addClass( 'active' );
-  });
+  $(document).ready(function(){
+        if($(".navbar-nav  a").attr("href") == window.location.href.slice(41)){
+            $(".nav-link").attr("class","nav-link active");
+        }
+       else{
+          $(".nav-link").attr("class","nav-link");
+         }
+    });
+  // $( '#topheader .navbar-nav a' ).on('click',
+  //     async function () {
+  //     await $( '#topheader .navbar-nav' ).find( 'a.active' ).removeClass( 'active' );
+  //     await $( this ).addClass( 'active' );
+  // });
 </script>
