@@ -8,14 +8,50 @@
   <title>YELPCAMP</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
-
   <script src="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js"></script>
   <link href="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css" rel="stylesheet" />
   <link rel="stylesheet" href="/stylesheets/allpages.css" />
 </head>
 
 <body class="d-flex flex-column vh-100">
-  <%- include('../partials/navbar')%>
+  <div id="topheader">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <div class="container">
+          <a class="navbar-brand" href="#">YelpCamp</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse " id="navbarNavAltMarkup">
+            <div class="navbar-nav me-auto mb-2 mb-lg-0 bignav">
+              <div class="navbar-nav">
+                <a class="nav-link " aria-current="page" href="/">Home</a>
+                <a class="nav-link active" href="/campgrounds">Campgrounds</a>
+                <a class="nav-link" href="/campgrounds/new">New Campgrounds</a>
+              </div>
+            </div>
+            <div class="d-flex navbar-nav">
+              <%if(!currentUser){%>
+                <a class="nav-link " href="/login">Login</a>
+                <a class="nav-link"  href="/register">Register</a>
+              <%} else {%>
+                <a class="nav-link"  href="/logout">Logout</a>
+              <%}%>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+    
+    <script>
+      $( '#topheader .bignav a' ).on('click',
+                  function () {
+          $( '#topheader .bignav' ).find( 'a.active' )
+          .removeClass( 'active' );
+          $( this ).addClass( 'active' );
+      });
+    </script>
+    
+  <!-- <%- include('../partials/navbar')%> -->
     <main class="container mt-5 mb-5">
       <%- include('../partials/flash')%>
         <%-body %>
