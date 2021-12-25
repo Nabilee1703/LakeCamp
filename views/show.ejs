@@ -1,0 +1,181 @@
+<% layout('layouts/boilerplate') -%>
+    <link rel="stylesheet" href="/stylesheets/star.css" />
+    <a class="btn btn-primary offset-1 mb-2" href="/campgrounds">Back to all campgrounds</a>
+    <div class="row">
+        <div class="col-lg-6 col-10 offset-1 offset-lg-1 mb-3">
+            <div class="card">
+                <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                    <% if(campground.images.length){%>
+                    <div class="carousel-indicators">
+                        <% if(campground.images.length > 1){%>
+                            <%for( i= 1; i <= campground.images.length; i++ ){%>
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="<%=i%>"
+                                class="active" aria-current="true" aria-label="Slide <%=i%>"></button>
+                            <%}%>
+                            <%}%>
+                    </div>
+                    <div class="carousel-inner">
+                        <%campground.images.forEach((image, i) => {%>
+                            <div class="carousel-item <%= i === 0 ? 'active' : '' %>">
+                                <img src="<%=image.path%>" class="d-block w-100" id="resizeImg" />
+                            </div>
+                        <%})%> 
+
+                        <% if(campground.images.length > 1){%>
+                                <button class="carousel-control-prev" type="button"
+                                    data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Previous</span>
+                                </button>
+                                <button class="carousel-control-next" type="button"
+                                    data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Next</span>
+                                </button>
+                                <%}%>
+                    </div>
+                    <%} else { %>
+                        <div class="carousel-item active">
+                            <img src="https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" class="d-block w-100" id="resizeImg" />
+                        </div>
+                        <%}%>
+                </div>
+            <div class="card-body">
+                <h4 class="card-title">
+                    <%= campground.title %>
+                </h4>
+                <p class="card-text">
+                    <%=campground.description%>
+                </p>
+                <p class="card-text text-muted">
+                    <%=campground.location%>
+                </p>
+                <h5 class="card-text">
+                    <%=campground.price%>$
+                </h5>
+                <p class="card-text">
+                    <small class="text-muted">Posted by <%=campground.owner.username%></small>
+                </p>
+            </div>
+        </div>
+        <%if (currentUser && campground.owner.equals(currentUser)){%>
+            <div class="d-flex col-6 mt-2">
+                <a class="btn btn-warning me-2" href="/campgrounds/<%=campground._id%>/edit">Edit</a>
+                <form action="/campgrounds/<%=campground._id%>?_method=DELETE" method="post">
+                    <button type="submit" class="btn btn-danger text-light">
+                        Delete
+                    </button>
+                </form>
+            </div>
+            <%}%>
+    </div>
+
+   
+
+    <div class="col-lg-5">
+        <div id='map' style='width: 100%; height: 250px;' class='mb-3'></div>
+        <div>
+            <!-- <div class="text-success text-decoration-underline py-1 fs-5 fw-bold" role="alert">
+                Review
+            </div> -->
+            <%if(campground.reviews.length> 0){%> <%for(review of campground.reviews){%>
+                    <div class="card mb-2">
+                        <div class="card-header" style="padding: 0 10px">
+                            <span style="font-size: 23px; color: rgb(247, 155, 43)">
+                                <%for(let i=0; i < review.rating; i++){%>&#x02605;<%}%>
+                            </span>
+                        </div>
+                        <div class="card-body" style="padding: 5px 10px">
+                            <blockquote class="blockquote mb-0">
+                                <p style="font-size: 17px">
+                                    <%=review.content%>
+                                </p>
+                                <footer class="blockquote-footer" style="font-size: 15px">
+                                    Reviewed by <%=review.owner.username%>
+                                </footer>
+                            </blockquote>
+                            <%if (currentUser && review.owner.equals(currentUser)) {%>
+                                <form action="/campgrounds/<%=campground._id%>/reviews/<%=review._id%>?_method=DELETE"
+                                    method="POST" class="float-end">
+                                    <button class="btn btn-sm btn-danger">Delete</button>
+                                </form>
+                                <%}%>
+                        </div>
+                    </div>
+                    <%}%>
+                        <%} else {%>
+                            <div class="card">
+                                <div class="card-body" style="padding: 10px 15px">
+                                    <blockquote class="blockquote mb-0" style="font-size: 18px">
+                                        <p>No review</p>
+                                    </blockquote>
+                                </div>
+                            </div>
+                            <%}%>
+        </div>
+        <div>
+            <div class=" py-1 mt-2 fs-5 ">
+                <h5>Leaving a review</h5>
+            </div>
+            <form action="/campgrounds/<%=campground._id%>/reviews" class="needs-validation" novalidate method="post">
+                <fieldset class="starability-basic" style="min-height: 40px">
+                    <input type="radio" id="no-rate" class="input-no-rate" name="rating" value="0" checked
+                        aria-label="No rating." />
+                    <input type="radio" id="first-rate1" name="rating" value="1" required />
+                    <label for="first-rate1" title="Terrible">1 star</label>
+                    <input type="radio" id="first-rate2" name="rating" value="2" required />
+                    <label for="first-rate2" title="Not good">2 stars</label>
+                    <input type="radio" id="first-rate3" name="rating" value="3" required />
+                    <label for="first-rate3" title="Average">3 stars</label>
+                    <input type="radio" id="first-rate4" name="rating" value="4" required />
+                    <label for="first-rate4" title="Very good">4 stars</label>
+                    <input type="radio" id="first-rate5" name="rating" value="5" required checked />
+                    <label for="first-rate5" title="Amazing">5 stars</label>
+                </fieldset>
+                <div class="mb-3">
+                    <!-- <label for="exampleFormControlTextarea1" class="form-label">
+                            <h6>Review</h6>
+                        </label> -->
+                    <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Write something..."
+                        rows="3" name="content" required></textarea>
+                    <div class="valid-feedback">Looks good!</div>
+                    <div class="invalid-feedback">Please give a feedback.</div>
+                </div>
+                <button type="submit" class="btn btn-success">Submit</button>
+            </form>
+        </div>
+    </div>
+    </div>
+    </div>
+<!-- <script>
+     const mapToken = '<%-process.env.MAPBOX_TOKEN%>';
+    mapboxgl.accessToken = mapToken;
+    const map = new mapboxgl.Map({
+    container: 'map', // container ID
+    style: 'mapbox://styles/mapbox/streets-v11', // style URL
+    center: <%-campground.geometry.coordinates%>, // starting position [lng, lat]
+    zoom: 9 // starting zoom
+});
+</script> -->
+    <script>
+        const mapToken = '<%-process.env.MAPBOX_TOKEN%>';
+        const  campground = <%-JSON.stringify(campground)%>;
+        mapboxgl.accessToken = mapToken;
+// const map = new mapboxgl.Map({
+//     container: 'map',
+//     style: 'mapbox://styles/mapbox/streets-v11', // stylesheet location
+//     center: campground.geometry.coordinates, // starting position [lng, lat]
+//     zoom: 10 // starting zoom
+// });
+// new mapboxgl.Marker()
+//     .setLngLat(campground.geometry.coordinates)
+//     .setPopup(
+//         new mapboxgl.Popup({ offset: 25 })
+//             .setHTML(
+//                 `<h3>${campground.title}</h3><p>${campground.location}</p>`
+//             )
+//     )
+//     .addTo(map)
+    </script>
+    
+    <script src="/javascripts/showMap.js"></script>

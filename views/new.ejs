@@ -1,0 +1,77 @@
+<% layout('layouts/boilerplate') -%>
+  <!-- <h1 class="text-center">New Campground</h1>
+  <div class="container d-flex justify-content-center align-items-center mt-5">
+    <div class="row">
+        
+        <a href="/campgrounds"> All campgrounds</a>
+      </div>
+    </div> -->
+    <a class="btn btn-primary offset-0 mb-2" href="/campgrounds">Back to all campgrounds</a>
+    <div class="container justify-content-center align-items-center">
+      <div class="row">
+          <div class=" col-md-8 offset-md-3 col-xl-6 offset-xl-3">
+              <div class="card shadow">
+                  <!-- <img src="https://images.unsplash.com/photo-1571863533956-01c88e79957e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80"
+                      alt="" class="card-img-top" /> -->
+                  <div class="card-body">
+                    <h1 class="text-center">New Campground</h1>
+                    <form action="/campgrounds" class="needs-validation" novalidate method="post" enctype="multipart/form-data">
+                      <div class="mb-3">
+                        <label for="title" class="form-label">Title</label>
+                        <input type="text" class="form-control " id="title" name="title" required>
+                        <div class="valid-feedback">
+                          Looks good!
+                        </div>
+                        <div class="invalid-feedback">
+                          Please choose a title.
+                        </div>
+                      </div>
+                
+                      <div class="mb-3">
+                        <label for="location" class="form-label">Location</label>
+                        <input type="text" class="form-control " name="location" id="location" required>
+                        <div class="valid-feedback">
+                          Looks good!
+                        </div>
+                        <div class="invalid-feedback">
+                          Please choose a location.
+                        </div>
+                      </div>
+                
+                      <div class="mb-3">
+                        <label for="price" class="form-label">Price</label>
+                        <div class="input-group ">
+                          <span class="input-group-text" id="inputGroupPrepend">$</span>
+                          <input type="number" class="form-control " name="price" id="price" placeholder="0.00" required>
+                          <div class="valid-feedback">
+                            Looks good!
+                          </div>
+                          <div class="invalid-feedback">
+                            Please choose a price.
+                          </div>
+                        </div>
+                      </div>
+                
+                      <div class="mb-3">
+                        <label for="description" class="form-label">Description</label>
+                        <input type="text" class="form-control" name="description" id="description" required>
+                        <div class="valid-feedback">
+                          Looks good!
+                        </div>
+                        <div class="invalid-feedback">
+                          Please give a description.
+                        </div>
+                      </div>
+                      <div class="mb-3">
+                        <label for="image" class="form-label">Choose picture(s)</label>
+                        <input class="form-control" type="file" id="image" name="image" multiple>
+                      </div>
+                      <button type="submit" class="btn btn-success">Add Campground</button>
+                    </form>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
