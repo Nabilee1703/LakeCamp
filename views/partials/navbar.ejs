@@ -27,10 +27,9 @@
 </div>
 
 <script>
-  $( '#topheader .bignav a' ).on('click',
-              function () {
-      $( '#topheader .navbar-nav' ).find( 'a.active' )
-      .removeClass( 'active' );
-      $( this ).addClass( 'active' );
+  $( '#topheader .navbar-nav a' ).on('click',
+      async function () {
+      await $( '#topheader .navbar-nav' ).find( 'a.active' ).removeClass( 'active' );
+      await $( this ).addClass( 'active' );
   });
 </script>
