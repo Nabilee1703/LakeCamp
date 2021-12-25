@@ -85,6 +85,7 @@ const scriptSrcUrls = [
     "https://api.tiles.mapbox.com/",
     "https://api.mapbox.com/",
     "https://kit.fontawesome.com/",
+    "https://code.jquery.com",
     "https://cloudinary.com/",
     "https://cdnjs.cloudflare.com/",
     "https://cdn.jsdelivr.net",
