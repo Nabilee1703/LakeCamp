@@ -29,7 +29,7 @@ module.exports.makeNewCampground = async (req, res, next)=>{
         const campground = await new CampGround(req.body)
         campground.geometry = geoData.body.features[0].geometry;
         campground.owner = req.user._id;
-        campground.images =  req.files.map(f =>({path: f.path, filename: f.filename})) || {path: "https://res.cloudinary.com/diwpadoiz/image/upload/v1640368102/YelpCamp/v9sfjic4hq9zzdjial19.jpg", filename: "v9sfjic4hq9zzdjial19"}
+        campground.images =  req.files.map(f =>({path: f.path, filename: f.filename}))
         
         await campground.save()
         req.flash('success', 'Successfully made new campground.')
