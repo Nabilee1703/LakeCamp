@@ -1,10 +1,4 @@
 <% layout('layouts/boilerplate') -%>
-    <!-- <ol>
-        <%for(campground of campgrounds){%>
-            <li><a href="campgrounds/<%=campground._id%>"><%=campground.title%></a></li>
-        <%}%>
-    </ol> -->
-    <!-- <a href="/campgrounds/new">Adding a new campground</a> -->
     <div id='map' style='width: 100%; height: 250px;' class='mb-4'></div>
     <div class="row row-cols-1 row-cols-sm-2 row-cols-xl-3 g-3">
         <%for(campground of campgrounds){%>
@@ -19,8 +13,7 @@
                         <h5 class="card-title">
                             <div class="link">
                                 <a href="campgrounds/<%=campground._id%>"><%=campground.title%></a>
-                                <!-- <span class="rightarrow d-inline-block">&#129030;</span> -->
-                               
+                                
                             </div>
                         </h5>
                         <h6 class="card-text">

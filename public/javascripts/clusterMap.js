@@ -1,4 +1,3 @@
-// const { campgrounds } = require("../../controllers/campgrounds");
 
 mapboxgl.accessToken = mapToken;
 const map = new mapboxgl.Map({
@@ -107,9 +106,7 @@ map.on('click', 'unclustered-point', (e) => {
  console.log(e.features[0])
 const coordinates = e.features[0].geometry.coordinates.slice();
 const mag = e.features[0].properties.popUpMarkup;
-// const tsunami =
-// e.features[0].properties.tsunami === 1 ? 'yes' : 'no';
- 
+
 // Ensure that if the map is zoomed out such that
 // multiple copies of the feature are visible, the
 // popup appears over the copy being pointed to.

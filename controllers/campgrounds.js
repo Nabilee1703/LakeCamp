@@ -78,7 +78,6 @@ module.exports.showCampground = async ( req, res, next)=>{
             path: 'owner'
         }
     }).populate('owner', 'username')
-    // campground.images.map(img => (img.filename, {height: 237, width: 414, crop: "crop"}))
     if(campground === null) throw new Error()
     res.render('show', {campground})
 }

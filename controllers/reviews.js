@@ -1,11 +1,5 @@
 const Review = require('../schema/review')
 const CampGround = require('../schema/campground');
-// const sanitizeHtml = require('sanitize-html');
-// function clean(x){
-//     sanitizeHtml(x, {
-//         allowedTags: [],
-//         allowedAttributes: {}
-//   })};
 module.exports.makeNewReview = async ( req, res, next)=>{
     try{
         const campground = await CampGround.findById(req.params.id)

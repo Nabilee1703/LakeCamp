@@ -8,10 +8,6 @@ const upload = multer({storage: storage})
 router.route('/')
 .get(campgroundLogic.campgrounds )
 .post(isLoggedIn,  upload.array('image'), isCleanData, campgroundLogic.makeNewCampground )
-// .post(upload.array('image'), (req, res) => {
-//     console.log(req.files)
-//     res.send(req.body)
-// })
 
 router.get('/new', isLoggedIn,campgroundLogic.newCampgroundFrom )
 
