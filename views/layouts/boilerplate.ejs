@@ -30,9 +30,9 @@
                 <a class="nav-link" href="/campgrounds/new">New Campgrounds</a>
               </div>
             </div>
-            <div class="d-flex navbar-nav nav1">
+            <div class="d-flex navbar-nav">
               <%if(!currentUser){%>
-                <a class="nav-link active" href="/login">Login</a>
+                <a class="nav-link " href="/login">Login</a>
                 <a class="nav-link"  href="/register">Register</a>
               <%} else {%>
                 <a class="nav-link"  href="/logout">Logout</a>
@@ -44,9 +44,9 @@
     </div>
     
     <script>
-      $( '#topheader .nav1 a' ).on('click',
+      $( '#topheader .navbar-nav a' ).on('click',
                   function () {
-          $( '#topheader .nav1' ).find( 'a.active' ).removeClass( 'active' );
+          $( '#topheader .navbar-nav' ).find( 'a.active' ).removeClass( 'active' );
           $( this ).addClass( 'active' );
       });
     </script>
