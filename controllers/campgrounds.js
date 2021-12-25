@@ -19,8 +19,6 @@ module.exports.newCampgroundFrom = async (req, res)=>{
 }
 module.exports.makeNewCampground = async (req, res, next)=>{
     try {
-        // const text = sanitizeHtml(JSON.stringify(req.body))
-        // const text2 = JSON.parse(text)
         const geoData = await geocoder.forwardGeocode({
              query: req.body.location,
                 limit: 1
