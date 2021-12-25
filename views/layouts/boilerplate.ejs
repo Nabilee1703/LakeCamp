@@ -44,11 +44,14 @@
     </div>
     
     <script>
-      $( '#topheader .navbar-nav a' ).on('click',
-                  function () {
-          $( '#topheader .navbar-nav' ).find( 'a.active' ).removeClass( 'active' );
-          $( this ).addClass( 'active' );
+      async function change(){
+        $( '#topheader .navbar-nav a' ).on('click',
+                 async function () {
+         await $( '#topheader .navbar-nav' ).find( 'a.active' ).removeClass( 'active' );
+         await $( this ).addClass( 'active' );
       });
+      }
+      change()
     </script>
     
   <!-- <%- include('../partials/navbar')%> -->
