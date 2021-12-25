@@ -26,4 +26,13 @@
   </nav>
 </div>
 
-
+<script>
+  $(document).ready(function(){
+        if($(".navbar-collapse a").attr("href") === window.location.href.slice(30)){
+            $(".nav-link").attr("class","nav-link active");
+        }
+       else{
+          $(".nav-link").attr("class","nav-link");
+         }
+    });
+</script>
