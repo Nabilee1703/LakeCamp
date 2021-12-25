@@ -53,6 +53,13 @@ module.exports.editCampground = async (req, res, next)=>{
        }
     await  campground.updateOne({$pull:{images: {filename: {$in: req.body.deleteImage}}}})
 }
+const geoData = await geocoder.forwardGeocode({
+    query: req.body.location,
+       limit: 1
+   }).send()
+
+const campground = await new CampGround(req.body)
+campground.geometry = geoData.body.features[0].geometry;
    const imgs = req.files.map(f =>({path: f.path, filename: f.filename}))
    campground.images.push(...imgs)
    campground.save()
