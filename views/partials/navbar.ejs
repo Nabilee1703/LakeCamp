@@ -26,7 +26,7 @@
   </nav>
 </div>
 
-<script>
+<!-- <script>
   $(document).ready(function(){
         if($(".navbar-collapse a").attr("href") === window.location.href.slice(30)){
             $(".nav-link").attr("class","nav-link active");
@@ -35,4 +35,12 @@
           $(".nav-link").attr("class","nav-link");
          }
     });
+</script> -->
+<script>
+  $( '#topheader .navbar-nav a' ).onClick(function(e) {
+      e.preventDefault();
+      $( '#topheader .navbar-nav' ).find( 'a.active' )
+      .removeClass( 'active' );
+      $( this ).addClass( 'active' );
+  });
 </script>
